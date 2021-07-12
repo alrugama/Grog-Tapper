@@ -5,6 +5,7 @@ class Menu extends Phaser.Scene {
 
     init() {
         //test
+        
     }
 
     preload() {
