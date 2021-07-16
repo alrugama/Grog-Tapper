@@ -42,29 +42,34 @@ class Play extends Phaser.Scene {
                 console.log("change Key");
                 this.curKeyNum = Math.round(Math.random() * this.alphabet.length);
                 this.curKeyDisplay.text = this.alphabet[this.curKeyNum];
+                this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum]);
             }
         });
         //this.timeClock.addEvent(this.keyTimer);
         this.clock = this.time.addEvent(this.keyTimer);
-        
+
+        this.isCorrect = false;
+        this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum])
 
     }
     
     update(){
-        let isCorrect = false;
+        this.isCorrect = false;
         //if correct key pressed
-        this.input.keyboard.on('keydown-' + this.alphabet[this.curKeyNum], function (event) {
-            isCorrect = true;
-            console.log(isCorrect);
-        });
-        
-        
-        if (isCorrect) {
+
+
+        console.log(this.isCorrect);
+        if (this.currentKey.isDown) {
             console.log("correct!");
-            this.clock.keyTimer.reset(this.keyTimer.config);
+            //this.keyTimer.reset(this.keyTimer.config);
+            this.time.removeEvent(this.keyTimer);
+            this.clock = this.time.addEvent(this.keyTimer);
             this.curKeyNum = Math.round(Math.random() * this.alphabet.length);
             this.curKeyDisplay.text = this.alphabet[this.curKeyNum];
+            this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum]);
         }
+        
+        
 
             
     }
