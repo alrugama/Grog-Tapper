@@ -4,9 +4,38 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
+        //backgound
         this.load.image('play', './assets/tempBar.png');
-        //this.load.image('center', './assets/center.png');
 
+        //keys
+        this.load.image('center', './assets/Letter Keys/Letter Key_A.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_B.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_C.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_D.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_E.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_F.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_G.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_H.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_I.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_J.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_K.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_L.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_M.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_N.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_O.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_P.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_Q.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_R.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_S.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_T.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_U.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_V.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_W.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_X.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_Y.png');
+        this.load.image('center', './assets/Letter Keys/Letter Key_Z.png');
+
+        //backgound music
         this.load.audio('music', './assets/BarMusic.wav');
 
     }
