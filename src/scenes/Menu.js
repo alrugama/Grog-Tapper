@@ -42,6 +42,26 @@ class Menu extends Phaser.Scene {
 
         //alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
+        let menuConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize -
+            borderPadding, 'Grog Tapper', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Press the matching key on the screen',
+        menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize +
+            borderPadding, 'Press ENTER to start', menuConfig).setOrigin(0.5);
+
 
     }
 
