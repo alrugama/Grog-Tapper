@@ -5,7 +5,7 @@ class Play extends Phaser.Scene {
 
     preload() {
         //backgound
-        this.load.image('play', './assets/tempBar.png');
+        this.load.image('play', './assets/Bar Background.png');
 
         //keys
         this.load.image('center', './assets/Letter Keys/Letter Key_A.png');
