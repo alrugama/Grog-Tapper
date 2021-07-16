@@ -37,6 +37,7 @@ class Play extends Phaser.Scene {
 
         //backgound music
         this.load.audio('music', './assets/BarMusic.wav');
+        this.load.audio('pour', './assets/Pouring sound effect.wav');
 
     }
     
@@ -124,6 +125,7 @@ class Play extends Phaser.Scene {
             this.curKeyNum = Math.round(Math.random() * this.alphabet.length);
             this.curKeyDisplay.text = this.alphabet[this.curKeyNum];
             this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum]);
+            this.sound.play('pour');
             this.score += 10;
             this.scoreLeft.text = this.score;
         }
