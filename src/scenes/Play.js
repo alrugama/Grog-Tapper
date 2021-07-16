@@ -42,7 +42,6 @@ class Play extends Phaser.Scene {
     
     create(){
         this.add.image(0,0, 'play').setOrigin(0, 0);
-        //this.add.image(game.config.width/2 - 40, game.config.height/2 - 40, 'center').setOrigin(0,0);
         
         //Initialize score
         this.score = 0;
@@ -104,16 +103,7 @@ class Play extends Phaser.Scene {
         
         //GAME OVER flag
         this.gameOver = false;
-            /*
-            //60-sec play clock
-            scoreConfig.fixedWidth = 0;
-            this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
-                this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
-                this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (ENTER) to return to menu',
-                scoreConfig).setOrigin(0.5);
-                this.gameOver = true;
-            }, null, this);
-            */
+ 
         var bgMusic = this.sound.add('music');
         bgMusic.setLoop(true);
         bgMusic.play();
@@ -121,19 +111,28 @@ class Play extends Phaser.Scene {
     
     update(){
         this.isCorrect = false;
+ 
         //if correct key pressed
 
 
-        console.log(this.isCorrect);
+        //console.log(this.isCorrect);
         if (this.currentKey.isDown) {
-            console.log("correct!");
+            //console.log("correct!");
             //this.keyTimer.reset(this.keyTimer.config);
             this.time.removeEvent(this.keyTimer);
             this.clock = this.time.addEvent(this.keyTimer);
             this.curKeyNum = Math.round(Math.random() * this.alphabet.length);
             this.curKeyDisplay.text = this.alphabet[this.curKeyNum];
             this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum]);
+            this.score += 10;
+            this.scoreLeft.text = this.score;
         }
+       
+            //console.log('wrong key');
+            //this.score -= 10;
+            //this.scoreLeft.text = this.score;
+        
+        
         /*
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyENTER)){
             this.scene.start('menuScene');
