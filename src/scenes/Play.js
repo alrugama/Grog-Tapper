@@ -129,7 +129,11 @@ class Play extends Phaser.Scene {
             this.score += 10;
             this.scoreLeft.text = this.score;
         }
-       
+        //this.input.keyboard.on('keydown', function);
+        //this.input.keyboard.on('keydown', function () {console.log('wrong key'); });
+        //this.input.keyboard.on('keydown', function (wrongKey, wrong) { console.log('wrong');});
+
+
             //console.log('wrong key');
             //this.score -= 10;
             //this.scoreLeft.text = this.score;
@@ -140,6 +144,11 @@ class Play extends Phaser.Scene {
             this.scene.start('menuScene');
         }
         */
+    }
+
+    wrongKey(){
+        this.score -= 10;
+        this.scoreLeft.text = this.score;
     }
 
 
