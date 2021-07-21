@@ -47,6 +47,9 @@ class Play extends Phaser.Scene {
         //Initialize score
         this.score = 0;
 
+        //time bar
+        //this.time = new Bar(this, game.config.width/2 + 10, game.config.height/2 - 20, 2000);
+
         this.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         //create Key display object
@@ -83,7 +86,8 @@ class Play extends Phaser.Scene {
         this.clock = this.time.addEvent(this.keyTimer);
 
         this.isCorrect = false;
-        this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum])
+        this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum]);
+        //this.time = new Bar(this, game.config.width/2 + 10, game.config.height/2 - 20, 2000);
 
         
         //Display score
@@ -114,6 +118,7 @@ class Play extends Phaser.Scene {
         this.isCorrect = false;
  
         //if correct key pressed
+        //this.time = new Bar(this, game.config.width/2 + 10, game.config.height/2 - 20, 2000);
 
 
         //console.log(this.isCorrect);
@@ -129,6 +134,7 @@ class Play extends Phaser.Scene {
             this.score += 10;
             this.scoreLeft.text = this.score;
         }
+        
         //this.input.keyboard.on('keydown', function);
         //this.input.keyboard.on('keydown', function () {console.log('wrong key'); });
         //this.input.keyboard.on('keydown', function (wrongKey, wrong) { console.log('wrong');});
@@ -150,6 +156,49 @@ class Play extends Phaser.Scene {
         this.score -= 10;
         this.scoreLeft.text = this.score;
     }
+}
 
+class Bar{
+    constructor(scene, x, y, time){
+        this.bar = new Phaser.GameObjects.Graphics(scene);
 
+        this.x = x;
+        this.y = y;
+        //this.value = time;
+        this.value = 100;
+        this.p = 76/100;
+        
+        this.draw();
+        scene.add.existing(this.bar);
+    }
+    decrease(amount){
+        this.value -= amount;
+
+        if(this.value < 0){
+            this.value = 0;
+        }
+        this.draw();
+        return(this.value === 0);
+    }
+
+    draw(){
+        this.bar.clear();
+
+        //bg
+        this.bar.fillStyle(0x000000);
+        this.bar.fillRect(this.x, this.y, 80, 16);
+
+        //time
+        this.bar.fillStyle(0xffffff);
+        this.bar.fillRect(this.x + 2, this.y + 2, 76, 12);
+
+        if(this.value < 30){
+            this.bar.fillStyle(0xff0000);
+        }else{
+            this.bar.fillStyle(0x00ff00);
+        }
+
+        var d = Math.floor(this.p * this.value);
+        this.bar.fillRect(this.x + 2, this.y + 2, d, 12);
+    }
 }
