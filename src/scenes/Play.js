@@ -5,7 +5,7 @@ class Play extends Phaser.Scene {
 
     preload() {
         //backgound
-        this.load.image('play', './assets/Bar Background.png');
+        this.load.image('play', './assets/Bar Background Updated.png');
 
         //keys
         this.load.image('center', './assets/Letter Keys/Letter Key_A.png');
@@ -46,9 +46,6 @@ class Play extends Phaser.Scene {
         
         //Initialize score
         this.score = 0;
-
-        //time bar
-        //this.time = new Bar(this, game.config.width/2 + 10, game.config.height/2 - 20, 2000);
 
         this.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -112,6 +109,7 @@ class Play extends Phaser.Scene {
         var bgMusic = this.sound.add('music');
         bgMusic.setLoop(true);
         bgMusic.play();
+        
     }
     
     update(){
@@ -135,21 +133,6 @@ class Play extends Phaser.Scene {
             this.scoreLeft.text = this.score;
         }
         
-        //this.input.keyboard.on('keydown', function);
-        //this.input.keyboard.on('keydown', function () {console.log('wrong key'); });
-        //this.input.keyboard.on('keydown', function (wrongKey, wrong) { console.log('wrong');});
-
-
-            //console.log('wrong key');
-            //this.score -= 10;
-            //this.scoreLeft.text = this.score;
-        
-        
-        /*
-        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyENTER)){
-            this.scene.start('menuScene');
-        }
-        */
     }
 
     wrongKey(){
