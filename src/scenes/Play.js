@@ -91,7 +91,7 @@ class Play extends Phaser.Scene {
             },
             fixedWidth: 100
         }
-        this.curKeyDisplay = this.add.text(game.config.width/2, game.config.height/2, this.alphabet[this.curKeyNum], this.displayConfig)
+        this.curKeyDisplay = this.add.text(game.config.width/2 + 70, game.config.height/2 , this.alphabet[this.curKeyNum], this.displayConfig)
 
         //create clock
         //this.timeClock = new Phaser.Time.Clock(this);
