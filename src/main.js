@@ -16,4 +16,3 @@ let borderPadding = borderUISize / 3;
 let keyA, keyB, keyC, keyD, keyE,keyF, keyG, keyH, keyI, keyJ, 
     keyK, keyL, keyM, keyN, keyO, keyP, keyQ, keyR, keyS,
     keyT, keyU, keyV, keyW, keyX, keyY, keyZ, keyENTER;
-    

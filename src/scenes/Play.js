@@ -7,35 +7,7 @@ class Play extends Phaser.Scene {
         //backgound
         this.load.image('play', './assets/Bar Background Updated.png');
         this.load.image('hourglass', './assets/Hourglass.png')
-        
-        //keys
-        this.load.image('center', './assets/Letter Keys/Letter Key_A.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_B.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_C.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_D.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_E.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_F.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_G.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_H.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_I.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_J.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_K.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_L.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_M.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_N.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_O.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_P.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_Q.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_R.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_S.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_T.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_U.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_V.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_W.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_X.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_Y.png');
-        this.load.image('center', './assets/Letter Keys/Letter Key_Z.png');
-        
+      
         //backgound music
         this.load.audio('music', './assets/BarMusic.wav');
         this.load.audio('pour', './assets/Pouring sound effect.wav');
@@ -136,7 +108,7 @@ class Play extends Phaser.Scene {
         //game over text config
         this.gameOverConfig = {
             fontFamily: 'Courier',
-            fontSize: '50px',
+            fontSize: '28px',
             backgroundColor: '#F3B141',
             color: '#843605',
             align: 'center',
@@ -145,7 +117,7 @@ class Play extends Phaser.Scene {
                 bottom: 5,
             }
         }
- 
+        //50
 
         //color
         this.colors = ['blue', 'green','red','yellow','purple','orange','pink'];
@@ -176,22 +148,25 @@ class Play extends Phaser.Scene {
         this.timerConfig = {
             fontFamily: 'Courier',
             fontSize: '50px',
-            color: '#843605',
+            color: '#FFFFFF',
             align: 'center',
             padding: {
                 top: 5,
                 bottom: 5,
             },
         }
+        //#843605
 
+        //timer
         this.add.image(game.config.width/2, 380, 'hourglass').setOrigin(0, 0);
-
-        this.timeRight = this.add.text( game.config.width/2 + 8, 390, game.settings.gameTimer, this.timerConfig);
+        this.timeRight = this.add.text( game.config.width/2 - 5, 395, game.settings.gameTimer, this.timerConfig);
         
     }
     
     update(){
         this.isCorrect = false;
+        //Game restart
+
 
         if (this.timer >= game.settings.gameTimer) {
             this.gameOver = true;
@@ -203,6 +178,8 @@ class Play extends Phaser.Scene {
             this.gameOverScoreText = this.add.text( game.config.width/2, game.config.height/2 + this.gameOverText.height, this.score, this.gameOverConfig);
             this.gameOverScoreText.x -= this.gameOverScoreText.width/2;
             this.gameOverScoreText.y -= this.gameOverScoreText.height/2;
+
+            this.scene.start('menuScene');
         }
 
         //console.log(this.isCorrect);
@@ -219,11 +196,6 @@ class Play extends Phaser.Scene {
             this.scoreLeft.text = this.score;
             this.add.image(game.config.width/2 - 30, game.config.height/2 + 44,this.colors[Math.floor(Math.random()*this.colors.length)]).setOrigin(0,0);
         }
-        
-    }
 
-    wrongKey(){
-        this.score -= 10;
-        this.scoreLeft.text = this.score;
     }
 }
