@@ -6,7 +6,7 @@ class Play extends Phaser.Scene {
     preload() {
         //backgound
         this.load.image('play', './assets/Bar Background Updated.png');
-
+        this.load.image('hourglass', './assets/Hourglass.png')
         
         //keys
         this.load.image('center', './assets/Letter Keys/Letter Key_A.png');
@@ -141,18 +141,18 @@ class Play extends Phaser.Scene {
 
         this.timerConfig = {
             fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: '#F3B141',
+            fontSize: '50px',
             color: '#843605',
             align: 'center',
             padding: {
                 top: 5,
                 bottom: 5,
             },
-            fixedWidth: 100
         }
 
-        this.timeRight = this.add.text( game.config.width - 4*(borderUISize + borderPadding), borderUISize + borderPadding*2, game.settings.gameTimer, this.timerConfig);
+        this.add.image(game.config.width/2, 380, 'hourglass').setOrigin(0, 0);
+
+        this.timeRight = this.add.text( game.config.width/2 + 8, 390, game.settings.gameTimer, this.timerConfig);
         
     }
     
