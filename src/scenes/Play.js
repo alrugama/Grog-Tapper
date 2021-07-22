@@ -6,8 +6,7 @@ class Play extends Phaser.Scene {
     preload() {
         //backgound
         this.load.image('play', './assets/Bar Background Updated.png');
-
-        
+ 
         //keys
         this.load.image('center', './assets/Letter Keys/Letter Key_A.png');
         this.load.image('center', './assets/Letter Keys/Letter Key_B.png');
@@ -40,6 +39,22 @@ class Play extends Phaser.Scene {
         this.load.audio('music', './assets/BarMusic.wav');
         this.load.audio('pour', './assets/Pouring sound effect.wav');
 
+        //Drinks
+        this.load.image('blue', './assets/Glass Blue.png');
+        this.load.image('green', './assets/Glass Green.png');
+        this.load.image('orange', './assets/Glass Orange.png');
+        this.load.image('pink', './assets/Glass Pink.png');
+        this.load.image('purple', './assets/Glass Purple.png');
+        this.load.image('red', './assets/Glass Red.png');
+        this.load.image('yellow', './assets/Glass Yellow.png');
+
+        //hourglass
+        this.load.image('hourglass', './assets/Hourglass.png');
+
+        //pirate spritesheet
+        this.load.spritesheet('pirate', './assets/Alternative Pirate Spritesheet.png', {frameWidth: 200, frameHeight: 227, 
+            startFrame: 0, endFrame: 1});
+
     }
     
     create(){
@@ -47,6 +62,18 @@ class Play extends Phaser.Scene {
         
         //Initialize score
         this.score = 0;
+
+        //Animation config
+        this.anims.create({
+            key: 'bob',
+            frames: this.anims.generateFrameNumbers('pirate', {start: 0, end: 1, first:0}),
+            frameRate: 1,
+            repeat: 2000
+        });
+
+        //insert pirate
+        let pirateBob = this.add.sprite(game.config.width/2 - 100, game.config.height/2 - (227/2) - 10, 'pirate'). setOrigin(0, 0);
+        pirateBob.anims.play('bob');
 
         this.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -64,7 +91,7 @@ class Play extends Phaser.Scene {
             },
             fixedWidth: 100
         }
-        this.curKeyDisplay = this.add.text(game.config.width/2, game.config.height/2, this.alphabet[this.curKeyNum], this.displayConfig)
+        this.curKeyDisplay = this.add.text(game.config.width/2 + 70, game.config.height/2 , this.alphabet[this.curKeyNum], this.displayConfig)
 
 
         //create looping timerevent that changes the key
@@ -84,7 +111,7 @@ class Play extends Phaser.Scene {
 
         this.isCorrect = false;
         this.currentKey = this.input.keyboard.addKey(this.alphabet[this.curKeyNum]);
-        //this.time = new Bar(this, game.config.width/2 + 10, game.config.height/2 - 20, 2000);
+
 
         
         //Display score
@@ -118,6 +145,12 @@ class Play extends Phaser.Scene {
             }
         }
  
+
+        //color
+        this.colors = ['blue', 'green','red','yellow','purple','orange','pink'];
+        this.add.image(game.config.width/2 - 30, game.config.height/2 + 44,this.colors[Math.floor(Math.random()*this.colors.length)]).setOrigin(0,0);
+
+        //music loop
         var bgMusic = this.sound.add('music');
         bgMusic.setLoop(true);
         bgMusic.play();
@@ -158,9 +191,6 @@ class Play extends Phaser.Scene {
     
     update(){
         this.isCorrect = false;
- 
-        //if correct key pressed
-        //this.time = new Bar(this, game.config.width/2 + 10, game.config.height/2 - 20, 2000);
 
         if (this.timer >= game.settings.gameTimer) {
             this.gameOver = true;
@@ -186,6 +216,7 @@ class Play extends Phaser.Scene {
             this.sound.play('pour');
             this.score += 10;
             this.scoreLeft.text = this.score;
+            this.add.image(game.config.width/2 - 30, game.config.height/2 + 44,this.colors[Math.floor(Math.random()*this.colors.length)]).setOrigin(0,0);
         }
         
     }
@@ -193,50 +224,5 @@ class Play extends Phaser.Scene {
     wrongKey(){
         this.score -= 10;
         this.scoreLeft.text = this.score;
-    }
-}
-
-class Bar{
-    constructor(scene, x, y, time){
-        this.bar = new Phaser.GameObjects.Graphics(scene);
-
-        this.x = x;
-        this.y = y;
-        //this.value = time;
-        this.value = 100;
-        this.p = 76/100;
-        
-        this.draw();
-        scene.add.existing(this.bar);
-    }
-    decrease(amount){
-        this.value -= amount;
-
-        if(this.value < 0){
-            this.value = 0;
-        }
-        this.draw();
-        return(this.value === 0);
-    }
-
-    draw(){
-        this.bar.clear();
-
-        //bg
-        this.bar.fillStyle(0x000000);
-        this.bar.fillRect(this.x, this.y, 80, 16);
-
-        //time
-        this.bar.fillStyle(0xffffff);
-        this.bar.fillRect(this.x + 2, this.y + 2, 76, 12);
-
-        if(this.value < 30){
-            this.bar.fillStyle(0xff0000);
-        }else{
-            this.bar.fillStyle(0x00ff00);
-        }
-
-        var d = Math.floor(this.p * this.value);
-        this.bar.fillRect(this.x + 2, this.y + 2, d, 12);
     }
 }
