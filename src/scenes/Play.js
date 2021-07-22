@@ -53,7 +53,7 @@ class Play extends Phaser.Scene {
 
         //pirate spritesheet
         this.load.spritesheet('pirate', './assets/Alternative Pirate Spritesheet.png', {frameWidth: 200, frameHeight: 227, 
-            startFrame: 0, endFrame: 2});
+            startFrame: 0, endFrame: 1});
 
     }
     
@@ -66,7 +66,7 @@ class Play extends Phaser.Scene {
         //Animation config
         this.anims.create({
             key: 'bob',
-            frames: this.anims.generateFrameNumbers('pirate', {start: 0, end: 2, first:0}),
+            frames: this.anims.generateFrameNumbers('pirate', {start: 0, end: 1, first:0}),
             frameRate: 1,
             repeat: 2000
         });
