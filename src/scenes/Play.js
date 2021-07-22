@@ -52,7 +52,7 @@ class Play extends Phaser.Scene {
         this.load.image('hourglass', './assets/Hourglass.png');
 
         //pirate spritesheet
-        this.load.spritesheet('pirate', './assets/Pirate Spritesheet.png', {frameWidth: 200, frameHeight: 227, 
+        this.load.spritesheet('pirate', './assets/Alternative Pirate Spritesheet.png', {frameWidth: 200, frameHeight: 227, 
             startFrame: 0, endFrame: 2});
 
     }
