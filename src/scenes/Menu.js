@@ -30,7 +30,7 @@ class Menu extends Phaser.Scene {
     update(){
         if(Phaser.Input.Keyboard.JustDown(keyENTER)){
             game.settings = {
-                gameTimer: 60
+                gameTimer: 5
             }
             this.scene.start('playScene');
         } 

@@ -179,6 +179,7 @@ class Play extends Phaser.Scene {
             this.gameOverScoreText.x -= this.gameOverScoreText.width/2;
             this.gameOverScoreText.y -= this.gameOverScoreText.height/2;
 
+            //game restart
             this.scene.start('menuScene');
         }
 
