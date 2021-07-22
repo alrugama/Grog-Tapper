@@ -7,6 +7,7 @@ class Play extends Phaser.Scene {
         //backgound
         this.load.image('play', './assets/Bar Background Updated.png');
 
+        
         //keys
         this.load.image('center', './assets/Letter Keys/Letter Key_A.png');
         this.load.image('center', './assets/Letter Keys/Letter Key_B.png');
@@ -34,7 +35,7 @@ class Play extends Phaser.Scene {
         this.load.image('center', './assets/Letter Keys/Letter Key_X.png');
         this.load.image('center', './assets/Letter Keys/Letter Key_Y.png');
         this.load.image('center', './assets/Letter Keys/Letter Key_Z.png');
-
+        
         //backgound music
         this.load.audio('music', './assets/BarMusic.wav');
         this.load.audio('pour', './assets/Pouring sound effect.wav');

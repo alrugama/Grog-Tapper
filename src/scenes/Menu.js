@@ -4,13 +4,14 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('menu', './assets/Menu Background No Title.png');
+        this.load.image('menu', './assets/Menu Background With Title.png');
         
     }
     
     create(){
         this.add.image(0,0, 'menu').setOrigin(0, 0);
 
+        
         //define keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.B);
@@ -39,8 +40,7 @@ class Menu extends Phaser.Scene {
         keyY = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y);
         keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-
-        //alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+        
 
         let menuConfig = {
             fontFamily: 'Courier',
@@ -54,14 +54,14 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
-
+        /*
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize -
             borderPadding, 'Grog Tapper', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'Press the matching key on the screen',
         menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize +
             borderPadding, 'Press ENTER to start', menuConfig).setOrigin(0.5);
-
+        */
 
     }
 
